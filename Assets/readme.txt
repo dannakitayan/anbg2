@@ -1,0 +1,1 @@
+The folders for "gameready" assets;
