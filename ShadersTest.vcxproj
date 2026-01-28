@@ -145,6 +145,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MD3.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Plain.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Light.h" />
     <ClInclude Include="MD3.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Plain.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="Shader.h" />
