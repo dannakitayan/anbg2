@@ -72,7 +72,7 @@ bool Engine::createWindow()
 	SDL_GetWindowSizeInPixels(m_window, &g_windows_width, &g_windows_height);
 	SDL_Log("[Engine::createWindow] SDL_GetWindowSizeInPixels");
 
-	glViewport(0, 0, g_screen_width, g_screen_height);
+	glViewport(0, 0, g_windows_width, g_windows_height);
 	SDL_Log("[Engine::createWindow] glViewport");
 
 	SDL_ShowWindow(m_window);

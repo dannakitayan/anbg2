@@ -6,7 +6,7 @@
 
 Camera::Camera()
 {
-	m_projection = glm::ortho(0.0f, (float)g_windows_width, (float)g_windows_height, 0.0f, -1.0f, 10.0f);
+	m_projection = glm::ortho(0.0f, (float)g_windows_width, (float)g_windows_height, 0.0f, -100.0f, 1000.0f);
 	m_view = glm::translate(
 		glm::mat4(1.0f),                    // identity
 		glm::vec3(-m_position[0], -m_position[1], 0.0f)

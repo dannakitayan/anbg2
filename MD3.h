@@ -1,5 +1,5 @@
 #pragma once
-#include "BasicTypes.h"
+#include "Mesh.h"
 
 //byte 8 - bit unsigned octet(character).
 //short16 little-endian signed 16-bit integer.
@@ -26,6 +26,9 @@ constexpr int32 MD3_MAX_TAGS = 16;			// per frame
 // vertex scales
 constexpr float	MD3_XYZ_SCALE = (1.0/64);
 
+// const q_pi
+constexpr float Q_PI = 3.14159265358979323846;
+
 typedef struct md3Frame_s {
 	vec3_t		bounds[2];
 	vec3_t		localOrigin;
@@ -42,7 +45,7 @@ typedef struct md3Tag_s {
 typedef struct {
 	int32		ident;				// 
 
-	byte	name[MAX_QPATH];	// polyset name
+	byte		name[MAX_QPATH];	// polyset name
 
 	int32		flags;
 	int32		numFrames;			// all surfaces in a model should have the same
@@ -79,18 +82,18 @@ typedef struct {
 } md3XyzNormal_t;
 
 typedef struct {
-	int32			ident;
-	int32			version;
+	int32			ident; //Magic number. As a string of 4 octets, reads "IDP3"; as unsigned little-endian 1367369843 (0x51806873); as unsigned big-endian 1936228433 (0x73688051)
+	int32			version; //MD3 version number, latest known is 15, but use the constant MD3_VERSION
 
-	byte		name[MAX_QPATH];	// model name
+	byte			name[MAX_QPATH];	// model name
 
 	int32			flags;
 
-	int32			numFrames;
-	int32			numTags;
-	int32			numSurfaces;
+	int32			numFrames; //Number of Frame objects, with a maximum of MD3_MAX_FRAMES
+	int32			numTags; //Number of Tag objects, with a maximum of MD3_MAX_TAGS
+	int32			numSurfaces; //Number of Surface objects, with a maximum of MD3_MAX_SURFACES
 
-	int32			numSkins;
+	int32			numSkins; //Quake 2 legacy
 
 	int32			ofsFrames;			// offset for first frame
 	int32			ofsTags;			// numFrames * numTags
@@ -102,16 +105,19 @@ typedef struct {
 class MD3
 {
 private:
-	md3Header_t m_header;
-	md3St_t m_uv;
-	vector<md3Triangle_t> m_triangles{};
-	vector<md3Surface_t> m_surfaces{};
-	vector<md3XyzNormal_t> m_normals{};
-	vector<md3Shader_t> m_shader{};
-	vector<md3Tag_t> m_tag{};
+	vector<Mesh*> m_meshes{};
 	vector<md3Frame_t> m_frames{};
+	vector<md3Tag_s> m_tags{};
+	vector<string> m_texture_names{};
+
+	vector<GLfloat> m_vertices{};
+	vector<GLuint> m_indexes{};
+
+	int32 mesh_count = 0;
+	void makeMesh();
 public:
-	MD3();
+	MD3() = default;
 	~MD3();
 	void loadMD3(const char* p_name);
+	const vector<Mesh*>& getMeshes();
 };

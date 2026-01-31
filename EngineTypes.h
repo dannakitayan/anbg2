@@ -7,7 +7,8 @@ enum class Folder : byte
 	Sounds,
 	Music,
 	Sprites,
-	Shaders
+	Shaders,
+	Models
 };
 
 enum class VertexAttribute : GLuint
