@@ -14,30 +14,27 @@ Render::~Render()
 {
 }
 
-void Render::drawMesh(Mesh* const p_mesh)
+void Render::drawMesh(const vector<Mesh*>& kModels, Texture* p_texture, Shader* p_shader)
 {
-    if (!p_mesh) return;
+    if (kModels.size() <= 0) return;
 
-    Shader* shader = p_mesh->getShader();
-    Texture* tex = p_mesh->getTexture();
-    VAO* vao = p_mesh->getVAO();
+    for (const auto& l_kModel : kModels)
+    {
+        p_shader->activateShader();
 
-    if (!shader || !tex || !vao) return;
+        if (p_shader->model != -1)
+            glUniformMatrix4fv(p_shader->model, 1, GL_FALSE, glm::value_ptr(l_kModel->getModel()));
 
-    shader->activateShader();
+        if (p_shader->texture0 != -1)
+            glUniform1i(p_shader->texture0, 0);
 
-    if (shader->model != -1)
-        glUniformMatrix4fv(shader->model, 1, GL_FALSE, glm::value_ptr(p_mesh->getModel()));
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, p_texture->getId());
 
-    if (shader->texture0 != -1)
-        glUniform1i(shader->texture0, 0);
+        l_kModel->getVAO()->bind();
+        glDrawElements(GL_TRIANGLES, l_kModel->getIndexesCount(), GL_UNSIGNED_INT, nullptr);
+        l_kModel->getVAO()->unbind();
 
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, tex->getId());
-
-    vao->bind();
-    glDrawElements(GL_TRIANGLES, p_mesh->getIndexCount(), GL_UNSIGNED_INT, nullptr);
-    vao->unbind();
-
-    glBindTexture(GL_TEXTURE_2D, 0);
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
 }

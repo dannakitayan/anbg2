@@ -25,6 +25,8 @@ string getFolderName(Folder folder)
         return "Ambients\\";
     case Folder::Shaders:
         return "Shaders\\";
+    case Folder::Models:
+        return "Models\\";
     default:
         return "";
     }

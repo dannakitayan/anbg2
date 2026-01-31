@@ -96,6 +96,12 @@
     <ClCompile Include="MD3.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
+    <ClCompile Include="MD0.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Plain.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mesh.h">
@@ -153,6 +159,12 @@
       <Filter>Header Files\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="MD3.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="MD0.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Plain.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
   </ItemGroup>

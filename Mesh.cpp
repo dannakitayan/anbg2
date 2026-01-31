@@ -63,6 +63,10 @@ Mesh::Mesh(const vector<GLfloat>& kVertices, const vector<GLuint>& kIndexes, con
 
 	m_texture_name = string(p_texture_name);
 	debugLog("[Mesh::Mesh] Texture is assigned");
+
+	m_indexes_count = kIndexes.size();
+	debugLog("[Mesh::Mesh] Mesh has count of indexes", std::to_string(m_indexes_count).c_str());
+	debugLog("[Mesh::Mesh] Mesh has count of vertices", std::to_string(kVertices.size()).c_str());
 }
 
 Mesh::~Mesh()
@@ -70,4 +74,20 @@ Mesh::~Mesh()
 	delete(m_vao);
 	delete(m_vbo);
 	delete(m_ebo);
+}
+
+VAO* Mesh::getVAO() const
+{
+	return m_vao;
+}
+
+glm::mat4 Mesh::getModel() const
+{
+	return m_model;
+
+}
+
+int32 Mesh::getIndexesCount() const
+{
+	return m_indexes_count;
 }

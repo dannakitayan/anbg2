@@ -108,8 +108,16 @@ private:
 	vector<Mesh*> m_meshes{};
 	vector<md3Frame_t> m_frames{};
 	vector<md3Tag_s> m_tags{};
+	vector<string> m_texture_names{};
+
+	vector<GLfloat> m_vertices{};
+	vector<GLuint> m_indexes{};
+
+	int32 mesh_count = 0;
+	void makeMesh();
 public:
 	MD3() = default;
 	~MD3();
 	void loadMD3(const char* p_name);
+	const vector<Mesh*>& getMeshes();
 };
