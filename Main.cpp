@@ -11,7 +11,7 @@
 #include "Camera.h"
 #include "Render.h"
 #include "Light.h"
-#include "MD3.h"
+#include "MD0.h"
 
 int main(int argc, char* argv[]) {
 
@@ -23,8 +23,8 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    upointer<MD3> l_p_md3 = std::make_unique<MD3>();
-    l_p_md3.get()->loadMD3("test.md3");
+    upointer<MD0> l_p_md0 = std::make_unique<MD0>();
+    l_p_md0.get()->loadMD0("test.md0");
 
     upointer<Input> l_p_input = std::make_unique<Input>();
     CameraMovement l_camera_movement;
@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     l_p_screen_shader.get()->sendShader();*/
 
     upointer<Texture> l_p_texture0 = std::make_unique<Texture>();
-    l_p_texture0.get()->loadTexture("ak74.png", TextureShaderType::Texture0);
+    l_p_texture0.get()->loadTexture("test.png", TextureShaderType::Texture0);
 
     upointer<Texture> l_p_texture1 = std::make_unique<Texture>();
     l_p_texture1.get()->loadTexture("texture1.png", TextureShaderType::Texture1);
@@ -92,9 +92,9 @@ int main(int argc, char* argv[]) {
 
         
         //Draw;
-        l_p_render.get()->drawMesh(l_p_md3.get()->getMeshes(), l_p_texture0.get(), l_p_shader.get());
+        l_p_render.get()->drawMesh(l_p_md0.get()->getMeshes(), l_p_texture0.get(), l_p_shader.get());
 
-        l_p_shader.get()->setLightToShader(l_p_light.get());
+        //l_p_shader.get()->setLightToShader(l_p_light.get());
 
         frame_time = SDL_GetTicks() - frame_start;
         if (g_frame_delay > frame_time)

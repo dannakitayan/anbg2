@@ -2,8 +2,9 @@
 #include "Mesh.h"
 
 //Own model based on QMDL idea;
-constexpr byte kMD0TextureNameMax = 64;
-constexpr auto kMD0 = (('M' << 24) + ('D' << 16) + ('L' << 8) + '0');
+constexpr size_t kMD0MagicLettersMax = 4;
+constexpr size_t kMD0TextureNameMax = 64;
+constexpr char kMD0Magic[kMD0MagicLettersMax] = { 'M','D','L','0' };
 constexpr int32 kMD0Version = 1;
 
 struct MD0Tag
@@ -14,7 +15,7 @@ struct MD0Tag
 
 struct MD0Begin
 {
-	int32 ident; //Magic number; MDL0
+	char ident[kMD0MagicLettersMax]; //Magic MDL0;
 	int32 version; //Version of md0;
 	int32 triangles_count; //Count of triangles;
 	int32 vertices_count; //Count of vertices
@@ -32,9 +33,16 @@ class MD0
 {
 private:
 	vector<Mesh*> m_meshes{};
+	vector<char> m_buffer{};
+	vector<GLfloat> m_vertices{};
+	vector<GLuint> m_indexes{};
+	int32 m_meshes_count = 0;
+	string m_texture_name{};
+	void makeMesh();
 public:
 	MD0() = default;
 	~MD0();
 	void loadMD0(const char* p_name);
+	const vector<Mesh*>& getMeshes();
 };
 

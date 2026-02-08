@@ -135,6 +135,7 @@
     <ClCompile Include="Base.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraMovement.cpp" />
+    <ClCompile Include="CMP.cpp" />
     <ClCompile Include="Debug.cpp" />
     <ClCompile Include="EBO.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="BasicTypes.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraMovement.h" />
+    <ClInclude Include="CMP.h" />
     <ClInclude Include="EBO.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineTypes.h" />
