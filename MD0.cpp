@@ -178,22 +178,23 @@ void MD0::makeMesh()
 	std::memcpy(
 		m_vertices.data(),                  //where to
 		l_vertices_pointer,                 //from
-		sizeof(float) * 11 * l_vertices_count //how much bytes
+		sizeof(GLfloat) * 11 * l_vertices_count //how much bytes
 	);
 
 	std::memcpy(
 		m_indexes.data(),
 		l_indexes_pointer,
-		sizeof(int) * 3 * l_triangles_count
+		sizeof(GLuint) * 3 * l_triangles_count
 	);
 
+	m_texture_name = l_texture_name;
 	m_meshes_count = 1;
 	m_buffer.clear();
 
 	if (m_meshes_count <= 0) return;
-	for (int i = 0; i < m_meshes_count; i++)
+	for (int i = 0; i < m_meshes_count; ++i)
 	{
-		Mesh* l_p_mesh = new Mesh(m_vertices, m_indexes, m_texture_name.c_str());
+		Mesh* l_p_mesh = new Mesh(m_vertices, m_indexes, m_texture_name);
 		m_meshes.push_back(l_p_mesh);
 		debugLog("[MD0::makeMesh] Mesh is pushed, number", (std::to_string(i)).c_str());
 		debugLog("[MD0::makeMesh] Mesh has vertices count", (std::to_string(m_vertices.size() / 11)).c_str());

@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     l_p_screen_shader.get()->sendShader();*/
 
     upointer<Texture> l_p_texture0 = std::make_unique<Texture>();
-    l_p_texture0.get()->loadTexture("test.png", TextureShaderType::Texture0);
+    l_p_texture0.get()->loadTexture("vodka.png", TextureShaderType::Texture0);
 
     upointer<Texture> l_p_texture1 = std::make_unique<Texture>();
     l_p_texture1.get()->loadTexture("texture1.png", TextureShaderType::Texture1);
@@ -71,6 +71,10 @@ int main(int argc, char* argv[]) {
     float l_time = 0.0f;
 
     l_p_engine.get()->alphaBlend(false);
+
+    //Enable depth testing;
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
 
     //Main;
     while (g_is_engine_run)

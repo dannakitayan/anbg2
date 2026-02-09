@@ -37,7 +37,7 @@ private:
 	vector<GLfloat> m_vertices{};
 	vector<GLuint> m_indexes{};
 	int32 m_meshes_count = 0;
-	string m_texture_name{};
+	const char* m_texture_name = nullptr;
 	void makeMesh();
 public:
 	MD0() = default;

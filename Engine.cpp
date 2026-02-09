@@ -35,6 +35,9 @@ bool Engine::createWindow()
 
 	SDL_Log("[Engine::createWindow] Set up OpenGL version and a context");
 
+	//Request a 24-bit depth buffer;
+	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+
 	m_window = SDL_CreateWindow(g_game_name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, g_windows_width, g_windows_height, SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 	if (m_window == nullptr)
 	{
