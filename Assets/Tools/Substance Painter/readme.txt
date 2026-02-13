@@ -1,0 +1,1 @@
+Place the spexp file into "<diskname>:\Users\<username>\Documents\Adobe\Adobe Substance 3D Painter\assets\export-presets"
