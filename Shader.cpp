@@ -168,9 +168,11 @@ void Shader::sendShader()
 	view = glGetUniformLocation(m_program_id, "view");
 	projection = glGetUniformLocation(m_program_id, "projection");
 
-	texture0 = glGetUniformLocation(m_program_id, "texture0");
-	texture1 = glGetUniformLocation(m_program_id, "texture1");
+	albedo = glGetUniformLocation(m_program_id, "albedo");
 	normal_map = glGetUniformLocation(m_program_id, "normal_map");
+	specular_map = glGetUniformLocation(m_program_id, "specular_map");
+	environment_map = glGetUniformLocation(m_program_id, "environment_map");
+	glossiness_metallic = glGetUniformLocation(m_program_id, "glossiness_metallic");
 	time = glGetUniformLocation(m_program_id, "time");
 
 	debugLog("[Shader::sendShader] All uniforms are set up");

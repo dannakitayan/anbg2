@@ -54,11 +54,12 @@ Mesh::Mesh(const vector<GLfloat>& kVertices, const vector<GLuint>& kIndexes, con
 	debugLog("[Mesh::Mesh] m_ebo->setData");
 
 	//VAO; BindAttributes;
-	const GLsizei stride = 11 * sizeof(GLfloat);
+	const GLsizei stride = kVerticesCount * sizeof(GLfloat);
 	m_vao->bindAttributes(VertexAttribute::Position, 3, stride, 0);//aPos;
-	m_vao->bindAttributes(VertexAttribute::Colors, 3, stride, 3 * sizeof(GLfloat));//aColors;
-	m_vao->bindAttributes(VertexAttribute::UV, 2, stride, 6 * sizeof(GLfloat));//aUV;
-	m_vao->bindAttributes(VertexAttribute::Normals, 3, stride, 8 * sizeof(GLfloat));//aNormal;
+	m_vao->bindAttributes(VertexAttribute::Colors, 3, stride, 3 * sizeof(GLfloat)); //aColors;
+	m_vao->bindAttributes(VertexAttribute::UV, 2, stride, 6 * sizeof(GLfloat)); //aUV;
+	m_vao->bindAttributes(VertexAttribute::Normals, 3, stride, 8 * sizeof(GLfloat)); //aNormal;
+	m_vao->bindAttributes(VertexAttribute::Tangens, 3, stride, 11 * sizeof(GLfloat)); //aTangent;
 	debugLog("[Mesh::Mesh] All attributes are binded");
 
 	m_texture_name = string(p_texture_name);

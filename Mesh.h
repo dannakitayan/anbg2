@@ -7,20 +7,7 @@ class EBO;
 class VBO;
 class VAO;
 
-constexpr size_t kVerticesCount = 11;
-
-typedef struct
-{
-	vec3_t normal; 
-	vec3_t position; 
-	vec3_t color; 
-	float uv[];
-}MeshVertex;
-
-struct MeshTriangle
-{
-	int32 indexes[3];
-};
+constexpr size_t kVerticesCount = 14;
 
 class Mesh
 {

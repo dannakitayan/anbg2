@@ -44,3 +44,8 @@ void Camera::updateView()
 		glm::vec3(m_position[0], m_position[1], 0.0f)
 	);
 }
+
+const glm::vec2& Camera::getCameraPosition()
+{
+	return m_position;
+}

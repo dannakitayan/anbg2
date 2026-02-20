@@ -1,5 +1,6 @@
 #pragma once
 #include "BasicTypes.h"
+#include <array>
 
 class Mesh;
 class Texture;
@@ -11,6 +12,6 @@ private:
 public:
 	Render();
 	~Render();
-	void drawMesh(const vector<Mesh*>& kModels, Texture* p_texture, Shader* p_shader);
+	void drawMesh(const Mesh* kModel, std::array<Texture*, 5>& textures, Shader* p_shader);
 };
 

@@ -53,5 +53,5 @@ void Light::setY(float y)
 
 void Light::setZ(float z)
 {
-    
+    m_position.z += z;
 }

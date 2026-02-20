@@ -16,12 +16,16 @@ enum class VertexAttribute : GLuint
 	Position,
 	Colors,
 	UV,
-	Normals
+	Normals,
+	Tangens,
+	Frame
 };
 
 enum class TextureShaderType : byte
 {
-	Texture0,
-	Texture1,
-	NormalMap
+	Albedo,
+	Normal,
+	Specular,
+	Environment,
+	AORoughnessMetallic
 };

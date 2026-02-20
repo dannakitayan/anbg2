@@ -93,9 +93,6 @@
     <ClCompile Include="CameraMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MD3.cpp">
-      <Filter>Source Files\Render</Filter>
-    </ClCompile>
     <ClCompile Include="MD0.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
@@ -103,6 +100,9 @@
       <Filter>Source Files\Render</Filter>
     </ClCompile>
     <ClCompile Include="CMP.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="TBO.cpp">
       <Filter>Source Files\Render</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,9 +161,6 @@
     <ClInclude Include="CameraMovement.h">
       <Filter>Header Files\MainScene</Filter>
     </ClInclude>
-    <ClInclude Include="MD3.h">
-      <Filter>Header Files\Render</Filter>
-    </ClInclude>
     <ClInclude Include="MD0.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
@@ -171,6 +168,9 @@
       <Filter>Header Files\Render</Filter>
     </ClInclude>
     <ClInclude Include="CMP.h">
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="TBO.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
   </ItemGroup>

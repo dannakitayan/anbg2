@@ -15,5 +15,6 @@ public:
 	void setCameraToShader(Shader* const p_shader);
 	void setCameraPosition(const glm::vec2& kPosition);
 	void updateView();
+	const glm::vec2& getCameraPosition();
 };
 

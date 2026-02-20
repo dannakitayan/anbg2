@@ -13,13 +13,15 @@ private:
 	GLuint m_fragment_id = 0;
 public:
 	//Uniforms;
-	GLint model;
-	GLint view;
-	GLint projection;
-	GLint texture0;
-	GLint texture1;
-	GLint normal_map;
-	GLint time;
+	GLuint model;
+	GLuint view;
+	GLuint projection;
+	GLuint albedo;
+	GLuint normal_map;
+	GLuint specular_map;
+	GLuint environment_map;
+	GLuint glossiness_metallic;
+	GLuint time;
 
 	Shader();
 	~Shader();

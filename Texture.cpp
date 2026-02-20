@@ -57,8 +57,8 @@ void Texture::loadTexture(const char* p_texture_name, TextureShaderType type)
 	glBindTexture(GL_TEXTURE_2D, m_id);
 
 	// Filters set up;
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -90,17 +90,25 @@ void Texture::setTextureToShader(Shader* p_shader)
 
 	switch (m_texture_type)
 	{
-	case TextureShaderType::Texture0:
+	case TextureShaderType::Albedo:
 		l_unit = 0;
-		l_location = p_shader->texture0;
+		l_location = p_shader->albedo;
 		break;
-	case TextureShaderType::Texture1:
+	case TextureShaderType::Normal:
 		l_unit = 1;
-		l_location = p_shader->texture1;
-		break;
-	case TextureShaderType::NormalMap:
-		l_unit = 2;
 		l_location = p_shader->normal_map;
+		break;
+	case TextureShaderType::Specular:
+		l_unit = 2;
+		l_location = p_shader->specular_map;
+		break;
+	case TextureShaderType::Environment:
+		l_unit = 3;
+		l_location = p_shader->environment_map;
+		break;
+	case TextureShaderType::AORoughnessMetallic:
+		l_unit = 3;
+		l_location = p_shader->glossiness_metallic;
 		break;
 	default:
 		return;

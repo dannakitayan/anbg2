@@ -10,7 +10,7 @@ private:
 	uint m_height;
 	GLuint m_id;
 	GLenum m_type;
-	TextureShaderType m_texture_type = TextureShaderType::Texture0;
+	TextureShaderType m_texture_type = TextureShaderType::Albedo;
 public:
 	Texture();
 	~Texture();

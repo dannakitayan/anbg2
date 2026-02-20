@@ -5,3 +5,5 @@
 
 string* getBaseFolderPath();
 string getAssetPath(Folder folder, const char* p_asset_name);
+
+extern string g_debug_path;

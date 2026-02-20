@@ -12,6 +12,7 @@
 #include "Render.h"
 #include "Light.h"
 #include "MD0.h"
+#include <array>
 
 int main(int argc, char* argv[]) {
 
@@ -24,7 +25,8 @@ int main(int argc, char* argv[]) {
     }
 
     upointer<MD0> l_p_md0 = std::make_unique<MD0>();
-    l_p_md0.get()->loadMD0("test.md0");
+    //l_p_md0.get()->loadMD0("qarmor.md0");
+    l_p_md0.get()->loadMD0("book.md0");
 
     upointer<Input> l_p_input = std::make_unique<Input>();
     CameraMovement l_camera_movement;
@@ -33,22 +35,33 @@ int main(int argc, char* argv[]) {
     l_p_shader.get()->loadShader("default.vert", "default.frag");
     l_p_shader.get()->sendShader();
 
-    /*upointer<Shader> l_p_screen_shader = std::make_unique<Shader>();
-    l_p_screen_shader.get()->loadShader("screen.vert", "screen.frag");
-    l_p_screen_shader.get()->sendShader();*/
+    upointer<Texture> l_p_albedo = std::make_unique<Texture>();
+    l_p_albedo.get()->loadTexture("book.png", TextureShaderType::Albedo);
 
-    upointer<Texture> l_p_texture0 = std::make_unique<Texture>();
-    l_p_texture0.get()->loadTexture("vodka.png", TextureShaderType::Texture0);
-
-    upointer<Texture> l_p_texture1 = std::make_unique<Texture>();
-    l_p_texture1.get()->loadTexture("texture1.png", TextureShaderType::Texture1);
+    upointer<Texture> l_p_specular = std::make_unique<Texture>();
+    l_p_specular.get()->loadTexture("book_special.png", TextureShaderType::Specular);
 
     upointer<Texture> l_p_normal = std::make_unique<Texture>();
-    l_p_normal.get()->loadTexture("normalmap.png", TextureShaderType::NormalMap);
+    l_p_normal.get()->loadTexture("book_normal.png", TextureShaderType::Normal);
 
-    l_p_texture0.get()->setTextureToShader(l_p_shader.get());
-    l_p_texture1.get()->setTextureToShader(l_p_shader.get());
+    upointer<Texture> l_p_environment = std::make_unique<Texture>();
+    l_p_environment.get()->loadTexture("environment.png", TextureShaderType::Environment);
+
+    upointer<Texture> l_p_arm = std::make_unique<Texture>();
+    l_p_arm.get()->loadTexture("book_glossiness_metallic.png", TextureShaderType::AORoughnessMetallic);
+
+    l_p_albedo.get()->setTextureToShader(l_p_shader.get());
     l_p_normal.get()->setTextureToShader(l_p_shader.get());
+    l_p_specular.get()->setTextureToShader(l_p_shader.get());
+    l_p_environment.get()->setTextureToShader(l_p_shader.get());
+    l_p_arm.get()->setTextureToShader(l_p_shader.get());
+
+    std::array<Texture*, 5> l_textures;
+    l_textures[0] = l_p_albedo.get();
+    l_textures[1] = l_p_normal.get();
+    l_textures[2] = l_p_specular.get();
+    l_textures[3] = l_p_environment.get();
+    l_textures[4] = l_p_arm.get();
 
     //upointer<Mesh> l_p_mesh = std::make_unique<Mesh>(l_p_shader.get(), l_p_texture0.get());
 
@@ -56,12 +69,12 @@ int main(int argc, char* argv[]) {
     l_p_camera.get()->setCameraToShader(l_p_shader.get());
 
     upointer<Light> l_p_light = std::make_unique<Light>();
-    l_p_light.get()->setPostion({ 177, 180 });
-    l_p_light.get()->setRadius(5);
-    l_p_light.get()->setIntensity(9);
+    l_p_light.get()->setPostion({ 358.0, 343.0 });
+    l_p_light.get()->setRadius(85);
+    l_p_light.get()->setIntensity(1);
     l_camera_movement.setLight(l_p_light.get());
 
-    //l_p_shader.get()->setLightToShader(l_p_light.get());
+    l_p_shader.get()->setLightToShader(l_p_light.get());
 
     upointer<Render> l_p_render = std::make_unique<Render>();
 
@@ -96,9 +109,9 @@ int main(int argc, char* argv[]) {
 
         
         //Draw;
-        l_p_render.get()->drawMesh(l_p_md0.get()->getMeshes(), l_p_texture0.get(), l_p_shader.get());
+        l_p_render.get()->drawMesh(l_p_md0.get()->getMeshes(), l_textures, l_p_shader.get());
 
-        //l_p_shader.get()->setLightToShader(l_p_light.get());
+        l_p_shader.get()->setLightToShader(l_p_light.get());
 
         frame_time = SDL_GetTicks() - frame_start;
         if (g_frame_delay > frame_time)
