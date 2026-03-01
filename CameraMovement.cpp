@@ -1,44 +1,38 @@
 #include "CameraMovement.h"
-#include "Light.h"
+#include "Camera.h"
 #include "Debug.h"
 
 void CameraMovement::key_down_w()
 {
-	m_light->setY(-1.0);
-	debugLog("Light y position", std::to_string(m_light->getPosition().y).c_str());
+	m_camera->setCameraPosition(glm::vec2(0.0, -1.0));
 }
 
 void CameraMovement::key_down_a()
 {
-	m_light->setX(-1.0);
-	debugLog("Light x position", std::to_string(m_light->getPosition().x).c_str());
+	m_camera->setCameraPosition(glm::vec2(-1.0, 0.0));
 }
 
 void CameraMovement::key_down_s()
 {
-	m_light->setY(1.0);
-	debugLog("Light y position", std::to_string(m_light->getPosition().y).c_str());
+	m_camera->setCameraPosition(glm::vec2(0.0, 1.0));
 }
 
 void CameraMovement::key_down_d()
 {
-	m_light->setX(1.0);
-	debugLog("Light x position", std::to_string(m_light->getPosition().x).c_str());
+	m_camera->setCameraPosition(glm::vec2(1.0, 0.0));
 }
 
 void CameraMovement::key_down_z()
 {
-	m_light->setZ(1.0);
-	debugLog("Light z position", std::to_string(m_light->getPosition().z).c_str());
+	
 }
 
 void CameraMovement::key_down_x()
 {
-	m_light->setZ(-1.0);
-	debugLog("Light z position", std::to_string(m_light->getPosition().z).c_str());
+	
 }
 
-void CameraMovement::setLight(Light* p_light)
+void CameraMovement::setCamera(Camera* p_camera)
 {
-	m_light = p_light;
+	m_camera = p_camera;
 }

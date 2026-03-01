@@ -108,7 +108,7 @@ void Texture::setTextureToShader(Shader* p_shader)
 		break;
 	case TextureShaderType::AORoughnessMetallic:
 		l_unit = 3;
-		l_location = p_shader->glossiness_metallic;
+		l_location = p_shader->roughness_metallic;
 		break;
 	default:
 		return;

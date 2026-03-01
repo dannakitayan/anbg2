@@ -1,12 +1,12 @@
 #pragma once
 #include "InputAction.h"
 
-class Light;
+class Camera;
 
 class CameraMovement : public InputAction
 {
 private:
-	Light* m_light;
+	Camera* m_camera;
 public:
 	// Inherited via InputAction
 	void key_down_w() override;
@@ -17,6 +17,6 @@ public:
 	void key_down_x() override;
 	CameraMovement() = default;
 	~CameraMovement() = default;
-	void setLight(Light* p_light);
+	void setCamera(Camera* p_camera);
 };
 

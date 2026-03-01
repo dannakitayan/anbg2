@@ -172,7 +172,7 @@ void Shader::sendShader()
 	normal_map = glGetUniformLocation(m_program_id, "normal_map");
 	specular_map = glGetUniformLocation(m_program_id, "specular_map");
 	environment_map = glGetUniformLocation(m_program_id, "environment_map");
-	glossiness_metallic = glGetUniformLocation(m_program_id, "glossiness_metallic");
+	roughness_metallic = glGetUniformLocation(m_program_id, "roughness_metallic");
 	time = glGetUniformLocation(m_program_id, "time");
 
 	debugLog("[Shader::sendShader] All uniforms are set up");

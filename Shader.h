@@ -20,7 +20,7 @@ public:
 	GLuint normal_map;
 	GLuint specular_map;
 	GLuint environment_map;
-	GLuint glossiness_metallic;
+	GLuint roughness_metallic;
 	GLuint time;
 
 	Shader();

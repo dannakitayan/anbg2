@@ -36,8 +36,8 @@ void Render::drawMesh(const Mesh* kModel, std::array<Texture*, 5>& textures, Sha
     if (p_shader->environment_map != -1)
         glUniform1i(p_shader->environment_map, 3);
 
-    if (p_shader->glossiness_metallic != -1)
-        glUniform1i(p_shader->glossiness_metallic, 4);
+    if (p_shader->roughness_metallic != -1)
+        glUniform1i(p_shader->roughness_metallic, 4);
 
     //Activate and bind textures;
     for (size_t i = 0; i < textures.size(); ++i)
